@@ -602,6 +602,27 @@ bool DiseasedWolf(uint32 i, Aura* pAura, bool apply)
 	return true;
 }
 
+bool ICCStoneform( uint32 i, Aura* pAura, bool apply )
+{
+	Unit* caster = pAura->GetTarget();
+
+	Creature* DeathboundWard = TO_CREATURE( caster );
+
+	if(apply)
+	{
+		DeathboundWard->GetAIInterface()->SetAllowedToEnterCombat( false );
+		DeathboundWard->SetUInt32Value( UNIT_NPC_EMOTESTATE, EMOTE_STATE_CUSTOM_SPELL_02 );
+		DeathboundWard->SetFlag( UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_9 + UNIT_FLAG_NOT_SELECTABLE );
+	}
+	else
+	{
+		DeathboundWard->GetAIInterface()->SetAllowedToEnterCombat( true );
+		DeathboundWard->SetUInt32Value( UNIT_NPC_EMOTESTATE, EMOTE_ONESHOT_NONE );
+		DeathboundWard->RemoveFlag( UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_9 + UNIT_FLAG_NOT_SELECTABLE );
+	}
+	return true;
+}
+
 void SetupMiscSpellhandlers(ScriptMgr* mgr)
 {
 	mgr->register_dummy_spell( 54640, &SOTATeleporter );
@@ -683,5 +704,7 @@ void SetupMiscSpellhandlers(ScriptMgr* mgr)
 	mgr->register_script_effect(teleportToCoordinates, &TeleportToCoordinates);
 	
 	mgr->register_dummy_aura(71764, &DiseasedWolf);
+	
+	mgr->register_dummy_aura( 70733, &ICCStoneform );
 }
 
