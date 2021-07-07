@@ -26,6 +26,7 @@ Gossip_BoreanTundra.cpp
 Gossip_WyrmrestTemple.cpp
 Gossip_XpEliminator.cpp
 Gossip_AzuremystIsle.cpp
+Gossip_BloodmystIsle.cpp
 Setup.cpp )
 
 SET( headers
