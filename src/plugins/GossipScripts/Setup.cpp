@@ -44,6 +44,7 @@ extern "C" SCRIPT_DECL void _exp_script_register(ScriptMgr* mgr)
 	SetupBoreanTundraGossip(mgr);
 	SetupWyrmrestTempleGossip(mgr);
 	SetupXpEliminatorGossip(mgr);
+	SetupAzuremystIsleGossip(mgr);
 }
 
 #ifdef WIN32
