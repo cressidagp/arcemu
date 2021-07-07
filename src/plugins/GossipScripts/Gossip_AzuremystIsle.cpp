@@ -25,7 +25,7 @@ class Proenitus_Gossip : public Arcemu::Gossip::Script
 		{
 			Arcemu::Gossip::Menu menu( pObject->GetGUID(), 0 );
 			
-			if(plr->HasFinishedQuest( 9280 ) == true )
+			if( plr->HasFinishedQuest( 9280 ) == true )
 			{
 				menu.setTextID( 8669 );
 			}
@@ -48,7 +48,7 @@ class BotanistTaerix_Gossip : public Arcemu::Gossip::Script
 		{
 			Arcemu::Gossip::Menu menu( pObject->GetGUID(), 0 );
 			
-			if(plr->HasFinishedQuest( 9293 ) == true )
+			if( plr->HasFinishedQuest( 9293 ) == true )
 			{
 				menu.setTextID( 8666 );
 			}
@@ -71,7 +71,7 @@ class SpiritOfTheVale_Gossip : public Arcemu::Gossip::Script
 		{
 			Arcemu::Gossip::Menu menu( pObject->GetGUID(), 0 );
 			
-			if(plr->HasFinishedQuest( 9450 ) == true )
+			if( plr->HasFinishedQuest( 9450 ) == true )
 			{
 				menu.setTextID( 8826 );
 			}
