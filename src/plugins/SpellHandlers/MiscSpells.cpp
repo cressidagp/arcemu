@@ -608,7 +608,7 @@ bool ICCStoneform( uint32 i, Aura* pAura, bool apply )
 
 	Creature* DeathboundWard = TO_CREATURE( caster );
 
-	if(apply)
+	if( apply )
 	{
 		DeathboundWard->GetAIInterface()->SetAllowedToEnterCombat( false );
 		DeathboundWard->SetUInt32Value( UNIT_NPC_EMOTESTATE, EMOTE_STATE_CUSTOM_SPELL_02 );
