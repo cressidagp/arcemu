@@ -28,6 +28,7 @@ Gossip_XpEliminator.cpp
 Gossip_AzuremystIsle.cpp
 Gossip_BloodmystIsle.cpp
 Gossip_TheExodar.cpp
+Gossip_RedridgeMountains.cpp
 Setup.cpp )
 
 SET( headers

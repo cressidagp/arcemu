@@ -41,5 +41,6 @@ void SetupXpEliminatorGossip(ScriptMgr* mgr);
 void SetupAzuremystIsleGossip(ScriptMgr* mgr);
 void SetupBloodmystIsleGossip(ScriptMgr* mgr);
 void SetupTheExodarGossip(ScriptMgr* mgr);
+void SetupRedridgeMountainsGossip(ScriptMgr* mgr);
 
 #endif
