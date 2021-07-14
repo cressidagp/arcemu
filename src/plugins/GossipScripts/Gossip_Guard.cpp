@@ -5288,6 +5288,7 @@ void SetupGuardGossip(ScriptMgr* mgr)
 	mgr->register_gossip_script(1744, new BrillGuard);				// Deathguard Mort
 	mgr->register_gossip_script(1496, new BrillGuardWithQuest);		// Deathguard Dillinger
 	mgr->register_gossip_script(1742, new BrillGuard);				// Deathguard Bartholomew
+	mgr->register_gossip_script(1735, new BrillGuard);				// Deathguard Abraham
 	mgr->register_gossip_script(5595, new IronforgeGuard);			// Ironforge Guard
 	mgr->register_gossip_script(727,  new KharanosGuard);			// Ironforge Mountaineer
 	mgr->register_gossip_script(16221, new FalconwingGuard);		// Silvermoon Guardian
