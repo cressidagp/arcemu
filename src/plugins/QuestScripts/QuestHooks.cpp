@@ -180,8 +180,8 @@ void DeeprunRatRoundup(Player* pPlayer, Object* pObject)
 
 void MaybellComplete(Player* pPlayer, Object* pObject)
 {
-	(TO_CREATURE(pObject))->SendChatMessage(CHAT_MSG_MONSTER_YELL, LANG_UNIVERSAL, "Here goes nothing...");
-	(TO_CREATURE(pObject))->Emote(EMOTE_ONESHOT_CRY);
+	(TO_CREATURE(pObject))->SendChatMessage(CHAT_MSG_MONSTER_SAY, LANG_UNIVERSAL, "Here goes nothing...");
+	(TO_CREATURE(pObject))->Emote(EMOTE_ONESHOT_EAT);
 	(TO_CREATURE(pObject))->Despawn(5000, 30000);
 }
 
