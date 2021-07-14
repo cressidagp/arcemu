@@ -5066,12 +5066,12 @@ void SetupGuardGossip(ScriptMgr* mgr)
 	mgr->register_gossip_script(5953, new RazorHillGuard);			// Razor Hill Grunt
 	mgr->register_gossip_script(5725, new BrillGuard);				// Deathguard Lundmark
 	mgr->register_gossip_script(1738, new BrillGuard);				// Deathguard Terrence
-	mgr->register_gossip_script(1652, new BrillGuard);				// Deathguard Burgess
+	//mgr->register_gossip_script(1652, new BrillGuard);				// Deathguard Burgess
 	mgr->register_gossip_script(1746, new BrillGuard);				// Deathguard Cyrus
 	mgr->register_gossip_script(1745, new BrillGuard);				// Deathguard Morris
 	mgr->register_gossip_script(1743, new BrillGuard);				// Deathguard Lawrence
 	mgr->register_gossip_script(1744, new BrillGuard);				// Deathguard Mort
-	mgr->register_gossip_script(1496, new BrillGuard);				// Deathguard Dillinger
+	//mgr->register_gossip_script(1496, new BrillGuard);				// Deathguard Dillinger
 	mgr->register_gossip_script(1742, new BrillGuard);				// Deathguard Bartholomew
 	mgr->register_gossip_script(5595, new IronforgeGuard);			// Ironforge Guard
 	mgr->register_gossip_script(727,  new KharanosGuard);			// Ironforge Mountaineer
