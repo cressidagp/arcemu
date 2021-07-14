@@ -3113,7 +3113,7 @@ class BrillGuard : public GossipScript
 
 				case 8: //Paladin
 					{
-						SendQuickMenu(0); // Need to add correct text
+						SendQuickMenu(10108);
 					}
 					break;
 
