@@ -3024,6 +3024,7 @@ class BrillGuard : public GossipScript
 		void GossipHello(Object* pObject, Player* plr)
 		{
 			GossipMenu* Menu;
+
 			objmgr.CreateGossipMenuForPlayer(&Menu, pObject->GetGUID(), 2593, plr);
 			Menu->AddItem(0, "The bank", 1);
 			Menu->AddItem(0, "The bat handler", 2);
@@ -3221,6 +3222,220 @@ class BrillGuard : public GossipScript
 					{
 						Messenger::SendGossipPOI( Plr, 2160.45f, 659.93f, 7, 6, 0, "Bowen Brisboise");
 						SendQuickMenu(4093);
+					}
+					break;
+			}
+		}
+};
+
+class BrillGuardWithQuest : public GossipScript
+{
+	public:
+		void OnHello(Object* pObject, Player* plr)
+		{
+			Arcemu::Gossip::Menu menu(pObject->GetGUID(), 2593);
+			sQuestMgr.FillQuestMenu( TO< Creature* >( pObject ), plr, menu );
+			
+			menu.AddItem(Arcemu::Gossip::ICON_CHAT, "The bank", 1);
+			menu.AddItem(Arcemu::Gossip::ICON_CHAT, "The bat handler", 2);
+			menu.AddItem(Arcemu::Gossip::ICON_CHAT, "The inn", 3);
+			menu.AddItem(Arcemu::Gossip::ICON_CHAT, "The stable master", 4);
+			menu.AddItem(Arcemu::Gossip::ICON_CHAT, "A class trainer", 5);
+			menu.AddItem(Arcemu::Gossip::ICON_CHAT, "A profession trainer", 6);
+			
+			menu.Send(plr);
+		}
+
+		void OnSelectOption(Object* pObject, Player* plr, uint32 Id, const char* Code)
+		{
+			switch(Id)
+			{
+				case 0:     // Return to start
+					OnHello(pObject, plr);
+					break;
+
+					//////////////////////
+					// Main menu handlers
+					/////
+
+				case 1:     // The bank
+					Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4074, plr);
+					break;
+
+				case 2:     // The bat handler
+					Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4075, plr);
+					break;
+
+				case 3:     // The inn
+					Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4076, plr);
+					Messenger::SendGossipPOI( plr, 2246.68f, 241.89f, 7, 6, 0, "Gallows` End Tavern");
+					break;
+
+				case 4:     // The stable master
+					Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 5978, plr);
+					Messenger::SendGossipPOI( plr, 2267.66f, 319.32f, 7, 6, 0, "Morganus");
+					break;
+
+				case 5:     // A class trainer
+					{
+						Arcemu::Gossip::Menu menu(pObject->GetGUID(), 4292);
+						
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Mage", 7);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Paladin", 8);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Priest", 9);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Rogue", 10);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Warlock", 11);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Warrior", 12);
+						
+						menu.Send(plr);
+						
+					}
+					break;
+
+				case 6:     // A profession trainer
+					{	
+						Arcemu::Gossip::Menu menu(pObject->GetGUID(), 4300);
+						
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Alchemy", 13);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Blacksmithing", 14);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Cooking", 15);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Enchanting", 16);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Engineering", 17);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "First Aid", 18);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Fishing", 19);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Herbalism", 20);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Leatherworking", 21);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Mining", 22);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Skinning", 23);
+						menu.AddItem(Arcemu::Gossip::ICON_CHAT, "Tailoring", 24);
+						
+						menu.Send(plr);
+					}
+					break;
+
+
+					////////////////
+					// Class trainer submenu
+					////////
+
+				case 7: //Mage
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4077, plr);
+						Messenger::SendGossipPOI( plr, 2259.18f, 240.93f, 7, 6, 0, "Cain Firesong");
+					}
+					break;
+
+				case 8: //Paladin
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 10108, plr);
+					}
+					break;
+
+				case 9: //Priest
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4078, plr);
+						Messenger::SendGossipPOI( plr, 2259.18f, 240.93f, 7, 6, 0, "Dark Cleric Beryl");
+					}
+					break;
+
+				case 10: //Rogue
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4079, plr);
+						Messenger::SendGossipPOI( plr, 2259.18f, 240.93f, 7, 6, 0, "Marion Call");
+					}
+					break;
+
+				case 11: //Warlock
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4080, plr);
+						Messenger::SendGossipPOI( plr, 2259.18f, 240.93f, 7, 6, 0, "Rupert Boch");
+					}
+					break;
+
+				case 12: //Warrior
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4081, plr);
+						Messenger::SendGossipPOI( plr, 2256.48f, 240.32f, 7, 6, 0, "Austil de Mon");
+					}
+					break;
+
+				case 13: //Alchemy
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4082, plr);
+						Messenger::SendGossipPOI( plr, 2263.25f, 344.23f, 7, 6, 0, "Carolai Anise");
+					}
+					break;
+
+				case 14: //Blacksmithing
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4083, plr);
+					}
+					break;
+
+				case 15: //Cooking
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4084, plr);
+					}
+					break;
+
+				case 16: //Enchanting
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4085, plr);
+						Messenger::SendGossipPOI( plr, 2250.35f, 249.12f, 7, 6, 0, "Vance Undergloom");
+					}
+					break;
+
+				case 17: //Engineering
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4086, plr);
+					}
+					break;
+
+				case 18: //First Aid
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4087, plr);
+						Messenger::SendGossipPOI( plr, 2246.68f, 241.89f, 7, 6, 0, "Nurse Neela");
+					}
+					break;
+
+				case 19: //Fishing
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4088, plr);
+						Messenger::SendGossipPOI( plr, 2292.37f, -10.72f, 7, 6, 0, "Clyde Kellen");
+					}
+					break;
+
+				case 20: //Herbalism
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4089, plr);
+						Messenger::SendGossipPOI( plr, 2268.21f, 331.69f, 7, 6, 0, "Faruza");
+					}
+					break;
+
+				case 21: //Leatherworking
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4090, plr);
+						Messenger::SendGossipPOI( plr, 2027, 78.72f, 7, 6, 0, "Shelene Rhobart");
+					}
+					break;
+
+				case 22: //Mining
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4091, plr);
+					}
+					break;
+
+				case 23: //Skinning
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(),4092, plr);
+						Messenger::SendGossipPOI( plr, 2027, 78.72f, 7, 6, 0, "Rand Rhobart");
+					}
+					break;
+
+				case 24: //Tailoring
+					{
+						Arcemu::Gossip::Menu::SendSimpleMenu(pObject->GetGUID(), 4093, plr);
+						Messenger::SendGossipPOI( plr, 2160.45f, 659.93f, 7, 6, 0, "Bowen Brisboise");
 					}
 					break;
 			}
@@ -5066,12 +5281,12 @@ void SetupGuardGossip(ScriptMgr* mgr)
 	mgr->register_gossip_script(5953, new RazorHillGuard);			// Razor Hill Grunt
 	mgr->register_gossip_script(5725, new BrillGuard);				// Deathguard Lundmark
 	mgr->register_gossip_script(1738, new BrillGuard);				// Deathguard Terrence
-	//mgr->register_gossip_script(1652, new BrillGuard);				// Deathguard Burgess
+	mgr->register_gossip_script(1652, new BrillGuardWithQuest);		// Deathguard Burgess
 	mgr->register_gossip_script(1746, new BrillGuard);				// Deathguard Cyrus
 	mgr->register_gossip_script(1745, new BrillGuard);				// Deathguard Morris
 	mgr->register_gossip_script(1743, new BrillGuard);				// Deathguard Lawrence
 	mgr->register_gossip_script(1744, new BrillGuard);				// Deathguard Mort
-	//mgr->register_gossip_script(1496, new BrillGuard);				// Deathguard Dillinger
+	mgr->register_gossip_script(1496, new BrillGuardWithQuest);		// Deathguard Dillinger
 	mgr->register_gossip_script(1742, new BrillGuard);				// Deathguard Bartholomew
 	mgr->register_gossip_script(5595, new IronforgeGuard);			// Ironforge Guard
 	mgr->register_gossip_script(727,  new KharanosGuard);			// Ironforge Mountaineer
