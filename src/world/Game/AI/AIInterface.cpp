@@ -2768,7 +2768,7 @@ AI_Spell* AIInterface::getSpell()
 						}
 					}
 				}
-				if(sp->spellType == STYPE_HEAL)
+				else if(sp->spellType == STYPE_HEAL)
 				{
 					if( (float(m_Unit->GetHealthPct()) / 100.0f) <= sp->floatMisc1 )
 					{
