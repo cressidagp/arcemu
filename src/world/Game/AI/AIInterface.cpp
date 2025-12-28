@@ -2360,11 +2360,27 @@ void AIInterface::_UpdateMovement(uint32 p_time)
 					// TODO: move wanderDistance to creature_spawns
 					float wanderDistance = rand() % 4 + 2;
 					float wanderO = RandomFloat(6.283f);
-					float wanderX = m_Unit->GetPositionX() + wanderDistance * cosf(wanderO);
-					float wanderY = m_Unit->GetPositionY() + wanderDistance * sinf(wanderO);
-					float wanderZ = m_Unit->GetMapMgr()->GetLandHeight(wanderX, wanderY, m_Unit->GetPositionZ() + 2);
+					float posX = m_Unit->GetPositionX();
+					float posY = m_Unit->GetPositionY();
+					float posZ = m_Unit->GetPositionZ();
+					float wanderX = posX + wanderDistance * cosf(wanderO);
+					float wanderY = posY + wanderDistance * sinf(wanderO);
+					float wanderZ = m_Unit->GetMapMgr()->GetLandHeight(wanderX, wanderY, posZ + 2);
 
-					MoveTo(wanderX, wanderY, wanderZ, wanderO);
+					//check if creature its too far far away from home
+					if(Math::CalcDistance(posX, posY, posZ, m_Unit->GetSpawnX(), m_Unit->GetSpawnY(), m_Unit->GetSpawnZ()) > 8)
+					{
+						//CLEAN ME LATER!
+						//const char* msg = "%s return home";
+						//m_Unit->SendChatMessage(CHAT_MSG_MONSTER_EMOTE, LANG_UNIVERSAL, msg);
+						
+						// return home
+						MoveTo(m_Unit->GetSpawnX(), m_Unit->GetSpawnY(), m_Unit->GetSpawnZ(), m_Unit->GetSpawnO());
+					}
+					else
+					{
+						MoveTo(wanderX, wanderY, wanderZ, wanderO);
+					}
 				}
 			}
 			else //we do have waypoints
