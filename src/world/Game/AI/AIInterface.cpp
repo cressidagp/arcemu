@@ -2355,28 +2355,17 @@ void AIInterface::_UpdateMovement(uint32 p_time)
 			// If creature has no waypoints just wander aimlessly around spawnpoint
 			if(GetWayPointsCount() == 0) //no waypoints
 			{
-				/*	if(m_moveRandom)
+				if(m_moveType == MOVEMENTTYPE_RANDOMWP)
 				{
-				if((rand()%10)== 0)
-				{
-				float wanderDistance = rand()%4 + 2;
-				float wanderX = ((wanderDistance*rand()) / RAND_MAX) - wanderDistance / 2;
-				float wanderY = ((wanderDistance*rand()) / RAND_MAX) - wanderDistance / 2;
-				float wanderZ = 0; // FIX ME ( I don't know how to get appropriate Z coord, maybe use client height map data)
+					// TODO: move wanderDistance to creature_spawns
+					float wanderDistance = rand() % 4 + 2;
+					float wanderO = RandomFloat(6.283f);
+					float wanderX = m_Unit->GetPositionX() + wanderDistance * cosf(wanderO);
+					float wanderY = m_Unit->GetPositionY() + wanderDistance * sinf(wanderO);
+					float wanderZ = m_Unit->GetMapMgr()->GetLandHeight(wanderX, wanderY, m_Unit->GetPositionZ() + 2);
 
-				if(m_Unit->CalcDistance(m_Unit->GetPositionX(), m_Unit->GetPositionY(), m_Unit->GetPositionZ(), ((Creature*)m_Unit)->respawn_cord[0], ((Creature*)m_Unit)->respawn_cord[1], ((Creature*)m_Unit)->respawn_cord[2])>15)
-				{
-				//return home
-				MoveTo(((Creature*)m_Unit)->respawn_cord[0],((Creature*)m_Unit)->respawn_cord[1],((Creature*)m_Unit)->respawn_cord[2],false);
+					MoveTo(wanderX, wanderY, wanderZ, wanderO);
 				}
-				else
-				{
-				MoveTo(m_Unit->GetPositionX() + wanderX, m_Unit->GetPositionY() + wanderY, m_Unit->GetPositionZ() + wanderZ,false);
-				}
-				}
-				}
-				*/
-				return;
 			}
 			else //we do have waypoints
 			{
