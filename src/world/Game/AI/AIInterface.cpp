@@ -2359,19 +2359,11 @@ void AIInterface::_UpdateMovement(uint32 p_time)
 			{
 				if(m_moveType == MOVEMENTTYPE_RANDOMWP)
 				{
-					//int wanderStepsCount;
-					//int wanderStepsMax;
-
 					// TODO: move wanderDistance to creature_spawns
 					float wanderDistance = rand() % 4 + 2;
 
 					if(!wanderStepsCount || wanderStepsCount == 0)
-					{
-						
-						//CLEAN ME LATER
-						//const char* msg = "%s get a new max";
-						//m_Unit->SendChatMessage(CHAT_MSG_MONSTER_EMOTE, LANG_UNIVERSAL, msg);
-						
+					{	
 						// number between 2 to 10
 						wanderStepsMax = rand() % 9 + 2;
 					}
@@ -2384,13 +2376,9 @@ void AIInterface::_UpdateMovement(uint32 p_time)
 					float wanderY = posY + wanderDistance * sinf(wanderO);
 					float wanderZ = m_Unit->GetMapMgr()->GetLandHeight(wanderX, wanderY, posZ + 2);
 
-					//check if creature its too far far away from home
+					// check if creature its too far far away from home
 					if(Math::CalcDistance(posX, posY, posZ, m_Unit->GetSpawnX(), m_Unit->GetSpawnY(), m_Unit->GetSpawnZ()) > 15)
-					{
-						//CLEAN ME LATER!
-						//const char* msg = "%s return home";
-						//m_Unit->SendChatMessage(CHAT_MSG_MONSTER_EMOTE, LANG_UNIVERSAL, msg);
-						
+					{	
 						// return home
 						MoveTo(m_Unit->GetSpawnX(), m_Unit->GetSpawnY(), m_Unit->GetSpawnZ(), m_Unit->GetSpawnO());
 					}
@@ -2401,13 +2389,9 @@ void AIInterface::_UpdateMovement(uint32 p_time)
 						
 						wanderStepsCount++;
 
-						// creature do all steps
+						// creature has done all steps
 						if(wanderStepsCount == wanderStepsMax)
-						{
-							// CLEAN ME!
-							//const char* msg = "%s pause";
-							//m_Unit->SendChatMessage(CHAT_MSG_MONSTER_EMOTE, LANG_UNIVERSAL, msg);
-							
+						{							
 							// reset variables
 							wanderStepsCount = 0;
 							wanderStepsMax = 0;
