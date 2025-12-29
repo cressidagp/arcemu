@@ -661,6 +661,9 @@ class SERVER_DECL AIInterface
 		//specifies if m_waypoints was loaded from DB, so shared between other AIInterface instances.
 		bool m_waypointsLoadedFromDB;
 		WayPointMap* m_waypoints;
+		// random movement
+		uint8 wanderStepsCount;
+		uint8 wanderStepsMax;
 	public:
 		bool m_is_in_instance;
 		bool skip_reset_hp;
