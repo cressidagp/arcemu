@@ -1341,7 +1341,7 @@ bool Creature::Load(CreatureSpawn* spawn, uint32 mode, MapInfo* info)
 
 	GetAIInterface()->SetWalk();
 
-	if(isattackable(spawn) && !(proto->isTrainingDummy) && !IsVehicle() )
+	if(isattackable(spawn) && !(proto->isTrainingDummy))
 	{
 		GetAIInterface()->SetAllowedToEnterCombat(true);
 	}
