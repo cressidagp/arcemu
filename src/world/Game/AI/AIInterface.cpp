@@ -4497,9 +4497,23 @@ void AIInterface::SetReturnPosition()
 {
 	if(m_returnX != 0.0f && m_returnY != 0.0f && m_returnZ != 0.0f)  //already returning somewhere
 		return;
-	m_returnX = m_Unit->GetSpawnX();
-	m_returnY = m_Unit->GetSpawnY();
-	m_returnZ = m_Unit->GetSpawnZ();
+	
+	// if dont have waypoints...
+	if(m_Unit->GetAIInterface()->hasWaypoints() == false)
+	{
+		/// store spawn point coordinates to later use
+		m_returnX = m_Unit->GetSpawnX();
+		m_returnY = m_Unit->GetSpawnY();
+		m_returnZ = m_Unit->GetSpawnZ();
+	}
+	// creature has waypoints
+	else
+	{
+		/// store current coordinates to later use
+		m_returnX = m_Unit->GetPositionX();
+		m_returnY = m_Unit->GetPositionY();
+		m_returnZ = m_Unit->GetPositionZ();
+	}
 }
 
 bool AIInterface::MoveCharge(float x, float y, float z)
