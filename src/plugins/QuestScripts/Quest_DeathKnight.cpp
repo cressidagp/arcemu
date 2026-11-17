@@ -97,7 +97,7 @@ void SetupDeathKnight(ScriptMgr* mgr)
 	GossipScript* SGT = new ScourgeGryphonTwo();
 	mgr->register_gossip_script(29501, SGT);
 
-	mgr->register_gameobject_script(191588, &AcherusSoulPrison::Create);
+	/*mgr->register_gameobject_script(191588, &AcherusSoulPrison::Create);
 	mgr->register_gameobject_script(191577, &AcherusSoulPrison::Create);
 	mgr->register_gameobject_script(191580, &AcherusSoulPrison::Create);
 	mgr->register_gameobject_script(191581, &AcherusSoulPrison::Create);
@@ -108,6 +108,6 @@ void SetupDeathKnight(ScriptMgr* mgr)
 	mgr->register_gameobject_script(191586, &AcherusSoulPrison::Create);
 	mgr->register_gameobject_script(191587, &AcherusSoulPrison::Create);
 	mgr->register_gameobject_script(191589, &AcherusSoulPrison::Create);
-	mgr->register_gameobject_script(191590, &AcherusSoulPrison::Create);
+	mgr->register_gameobject_script(191590, &AcherusSoulPrison::Create);*/
 
 }
