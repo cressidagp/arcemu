@@ -340,6 +340,7 @@ class SERVER_DECL CreatureAIScript
 		virtual void OnEmote(Player* pPlayer, EmoteType Emote) {}
 		virtual void OnHealed(Unit* healer, uint32 spellId, int32 amount) {}
 		virtual void OnApplyAura(Unit* caster, uint32 spellId) {}
+		virtual void OnWander(Unit* caster) {}
 		virtual void StringFunctionCall(int) {}
 
 		void RegisterAIUpdateEvent(uint32 frequency);
