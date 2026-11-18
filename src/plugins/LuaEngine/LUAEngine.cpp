@@ -1702,6 +1702,19 @@ class LuaCreature : public CreatureAIScript
 			RELEASE_LOCK;
 		}
 
+		void OnWander(Unit *caster)
+		{
+			CHECK_BINDING_ACQUIRELOCK;
+
+			sLuaMgr.BeginCall( m_binding->m_functionReferences[ CREATURE_EVENT_ON_WANDER ] );
+			sLuaMgr.PushUnit( _unit );
+			sLuaMgr.PUSH_INT( CREATURE_EVENT_ON_WANDER );
+			sLuaMgr.PushUnit( caster );
+			sLuaMgr.ExecuteCall( 3 );
+
+			RELEASE_LOCK;
+		}
+
 		void StringFunctionCall(int fRef)
 		{
 
