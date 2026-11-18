@@ -4233,13 +4233,11 @@ void AIInterface::EventUnfear(Unit* pUnit, uint32 misc1)
 
 void AIInterface::EventWander(Unit* pUnit, uint32 misc1)
 {
-	if(m_AIState == STATE_EVADE)
-		return;
 	if(pUnit == NULL) return;
 
 	m_WanderTimer = 0;
 
-	//CALL_SCRIPT_EVENT(m_Unit, OnWander)(pUnit, 0); FIX ME
+	CALL_SCRIPT_EVENT(m_Unit, OnWander)(pUnit);
 	m_AIState = STATE_WANDER;
 	StopMovement(1);
 
