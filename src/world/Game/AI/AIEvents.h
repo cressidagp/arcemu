@@ -22,7 +22,7 @@
 #define __AIEVENTS_H
 
 class AIInterface;
-typedef void(AIInterface::*pAIEvent)(Unit* punit, uint32 misc1);
+typedef void(AIInterface::*pAIEvent)(Unit* pUnit, uint32 misc1);
 
 enum AiEvents
 {
