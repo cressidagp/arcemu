@@ -1980,7 +1980,7 @@ void Aura::SpellAuraModConfuse(bool apply)
 		m_target->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_CONFUSED);
 
 		m_target->setAItoUse(true);
-		m_target->GetAIInterface()->HandleEvent(EVENT_WANDER, u_caster, 0);
+		m_target->GetAIInterface()->HandleEvent(EVENT_WANDER, u_caster, GetSpellId());
 
 		if(p_target)
 		{
