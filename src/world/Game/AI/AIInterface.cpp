@@ -4237,7 +4237,7 @@ void AIInterface::EventWander(Unit* pUnit, uint32 misc1)
 
 	m_WanderTimer = 0;
 
-	CALL_SCRIPT_EVENT(m_Unit, OnWander)(pUnit);
+	CALL_SCRIPT_EVENT(m_Unit, OnWander)(pUnit, misc1);
 	m_AIState = STATE_WANDER;
 	StopMovement(1);
 
