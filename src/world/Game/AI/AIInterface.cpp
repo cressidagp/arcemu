@@ -4196,7 +4196,7 @@ void AIInterface::EventFear(Unit* pUnit, uint32 misc1)
 	m_FearTimer = 0;
 	SetUnitToFear(pUnit);
 
-	CALL_SCRIPT_EVENT(m_Unit, OnFear)(pUnit, 0);
+	CALL_SCRIPT_EVENT(m_Unit, OnFear)(pUnit, misc1);
 	m_AIState = STATE_FEAR;
 	StopMovement(1);
 
