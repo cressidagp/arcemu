@@ -2119,7 +2119,7 @@ void Aura::SpellAuraModFear(bool apply)
 		m_target->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_FLEEING);
 
 		m_target->setAItoUse(true);
-		m_target->GetAIInterface()->HandleEvent(EVENT_FEAR, u_caster, 0);
+		m_target->GetAIInterface()->HandleEvent(EVENT_FEAR, u_caster, GetSpellId());
 		m_target->m_fearmodifiers++;
 		if(p_target)
 		{
